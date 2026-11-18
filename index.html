@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriela Victoria Mayer | Data Analyst Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --clr-bg: #fdfdfd;
+            --clr-text: #1a1a1a;
+            --clr-text-muted: #4a4a4a;
+            --clr-primary: #0056b3;
+            --clr-primary-hover: #003d82;
+            --clr-surface: #ffffff;
+            --clr-border: #e1e4e8;
+            --clr-chip-bg: #e9ecef;
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+            --fs-h1: clamp(2.5rem, 5vw + 1rem, 4rem);
+            --fs-h2: clamp(2rem, 4vw + 1rem, 3rem);
+            --fs-h3: clamp(1.25rem, 2vw + 1rem, 1.5rem);
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+            --radius-md: 8px;
+            --radius-pill: 9999px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --transition-speed: 0.3s;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --clr-bg: #121212;
+                --clr-text: #e0e0e0;
+                --clr-text-muted: #a0a0a0;
+                --clr-primary: #66b2ff;
+                --clr-primary-hover: #99ccff;
+                --clr-surface: #1e1e1e;
+                --clr-border: #333333;
+                --clr-chip-bg: #2c2c2c;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-block-start: 5rem; }
+        body {
+            font-family: var(--font-main);
+            background-color: var(--clr-bg);
+            color: var(--clr-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; border-radius: var(--radius-md); }
+        a { color: var(--clr-primary); text-decoration: none; transition: color var(--transition-speed) ease; }
+        a:hover { color: var(--clr-primary-hover); }
+
+        .container { width: min(100% - 2rem, 1200px); margin-inline: auto; }
+        section {
+            padding-block: var(--space-xl);
+            border-block-end: 1px solid var(--clr-border);
+        }
+        section:last-of-type { border-block-end: none; }
+        .section-title { font-size: var(--fs-h2); margin-block-end: var(--space-lg); text-align: center; }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--clr-primary);
+            color: var(--clr-bg);
+            padding-block: 0.75rem;
+            padding-inline: 1.5rem;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+        .btn:hover { background-color: var(--clr-primary-hover); color: var(--clr-bg); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; color: var(--clr-primary); border-color: var(--clr-primary); }
+        .btn-outline:hover { background-color: var(--clr-primary); color: var(--clr-bg); }
+
+        .site-header {
+            position: sticky;
+            inset-block-start: 0;
+            background-color: color-mix(in srgb, var(--clr-bg) 90%, transparent);
+            backdrop-filter: blur(10px);
+            border-block-end: 1px solid var(--clr-border);
+            z-index: 1000;
+            padding-block: var(--space-md);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
+        .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; color: var(--clr-text); }
+        .nav-links { display: flex; list-style: none; gap: var(--space-lg); }
+        .nav-links a { color: var(--clr-text-muted); font-weight: 600; }
+        .nav-links a:hover { color: var(--clr-primary); }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 80vh;
+            padding-block: var(--space-xl);
+            border-block-end: none;
+        }
+        .hero h1 { font-size: var(--fs-h1); line-height: 1.1; margin-block-end: var(--space-md); letter-spacing: -1px; }
+        .hero p { font-size: var(--fs-h3); color: var(--clr-text-muted); max-width: 800px; margin-block-end: var(--space-lg); }
+
+        .about-content { display: grid; gap: var(--space-lg); grid-template-columns: 1fr; max-width: 800px; margin-inline: auto; text-align: center; }
+        .about-content p { font-size: 1.1rem; color: var(--clr-text-muted); }
+        .highlight-text { font-weight: 600; color: var(--clr-text); }
+
+        .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md); max-width: 800px; margin-inline: auto; }
+        .skill-chip {
+            background-color: var(--clr-chip-bg);
+            padding-block: 0.5rem;
+            padding-inline: 1.25rem;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            color: var(--clr-text);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-speed) ease;
+        }
+        .skill-chip:hover { transform: translateY(-2px); }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--space-lg); }
+        .project-card {
+            background-color: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .project-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 0; background-color: var(--clr-chip-bg); }
+        .project-content { padding: var(--space-md); display: flex; flex-direction: column; flex-grow: 1; }
+        .project-title { font-size: 1.25rem; margin-block-end: var(--space-sm); }
+        .project-desc { color: var(--clr-text-muted); font-size: 0.95rem; margin-block-end: var(--space-md); flex-grow: 1; }
+        .project-links { display: flex; gap: var(--space-md); margin-block-start: auto; }
+        .project-links a { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .contact-content { text-align: center; max-width: 600px; margin-inline: auto; }
+        .contact-content p { font-size: 1.1rem; color: var(--clr-text-muted); margin-block-end: var(--space-lg); }
+        .contact-links { display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap; }
+
+        .site-footer { padding-block: var(--space-lg); text-align: center; color: var(--clr-text-muted); border-block-start: 1px solid var(--clr-border); font-size: 0.9rem; }
+
+        @media (max-width: 600px) {
+            .nav-container { flex-direction: column; }
+            .nav-links { gap: var(--space-md); width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">GVM.</a>
+            <nav aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero container">
+            <h1>Gabriela Victoria Mayer</h1>
+            <p>Data Analyst</p>
+            <p style="font-size: 1.1rem; max-width: 600px; margin-block-end: var(--space-xl);">
+                Leveraging clinical analytical logic for data-driven problem solving.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>
+                    My journey into data is unique. I transitioned from a career as an <span class="highlight-text">ICU Nurse</span> to becoming a passionate <span class="highlight-text">Data Analyst</span>. In the intensive care unit, success relies on interpreting complex metrics rapidly, maintaining meticulous attention to detail, and using analytical logic to solve critical problems under pressure.
+                </p>
+                <p>
+                    Today, I apply that same clinical rigor and critical thinking to datasets. I am <span class="highlight-text">Google Data Analytics Certified</span> and specialize in transforming raw information into actionable, strategic insights that drive better decision-making.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-chip">SQL</span>
+                <span class="skill-chip">Python</span>
+                <span class="skill-chip">R</span>
+                <span class="skill-chip">Tableau</span>
+                <span class="skill-chip">Data Visualization</span>
+                <span class="skill-chip">Data Cleaning</span>
+                <span class="skill-chip">Statistical Analysis</span>
+                <span class="skill-chip">Critical Thinking</span>
+            </div>
+        </section>
+
+        <section id="projects" class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="https://placehold.co/600x400/2c2c2c/ffffff?text=Healthcare+Data+Analysis" alt="Healthcare Data Analysis visualization" class="project-image" loading="lazy" width="600" height="400">
+                    <div class="project-content">
+                        <h3 class="project-title">Healthcare Data Analysis</h3>
+                        <p class="project-desc">Exploratory Data Analysis (EDA) using Python (Pandas, Matplotlib) to identify patient readmission trends and operational bottlenecks.</p>
+                        <div class="project-links">
+                            <a href="#">View Case Study</a>
+                            <a href="#">GitHub Repo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img src="https://placehold.co/600x400/0056b3/ffffff?text=Sales+Dashboard" alt="Sales Dashboard preview" class="project-image" loading="lazy" width="600" height="400">
+                    <div class="project-content">
+                        <h3 class="project-title">Interactive Sales Dashboard</h3>
+                        <p class="project-desc">A dynamic Tableau dashboard visualizing regional sales performance, profit margins, and year-over-year growth metrics.</p>
+                        <div class="project-links">
+                            <a href="#">View Dashboard</a>
+                            <a href="#">Methodology</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img src="https://placehold.co/600x400/4a4a4a/ffffff?text=SQL+Database+Querying" alt="Database querying concept image" class="project-image" loading="lazy" width="600" height="400">
+                    <div class="project-content">
+                        <h3 class="project-title">Inventory Optimization Model</h3>
+                        <p class="project-desc">Complex SQL querying and R statistical modeling to forecast inventory needs and reduce supply waste by 15%.</p>
+                        <div class="project-links">
+                            <a href="#">Read Article</a>
+                            <a href="#">SQL Scripts</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <p>I am currently open to new opportunities in data analytics. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:mayergabriela@gmail.com" class="btn">Email Me</a>
+                    <a href="https://www.linkedin.com/in/mayergabrielav/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn Profile</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer container">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Gabriela Victoria Mayer. Built with analytical precision.</p>
+    </footer>
+</body>
+</html>
