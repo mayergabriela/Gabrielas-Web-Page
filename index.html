@@ -14,8 +14,9 @@
             --clr-bg: #fdfdfd;
             --clr-text: #1a1a1a;
             --clr-text-muted: #4a4a4a;
-            --clr-primary: #0056b3;
-            --clr-primary-hover: #003d82;
+            --clr-primary: #8b5cf6;
+            --clr-primary-hover: #6d28d9;
+            --clr-primary-gradient: linear-gradient(135deg, #c084fc, #8b5cf6, #6d28d9);
             --clr-surface: #ffffff;
             --clr-border: #e1e4e8;
             --clr-chip-bg: #e9ecef;
@@ -39,8 +40,8 @@
                 --clr-bg: #121212;
                 --clr-text: #e0e0e0;
                 --clr-text-muted: #a0a0a0;
-                --clr-primary: #66b2ff;
-                --clr-primary-hover: #99ccff;
+                --clr-primary: #c084fc;
+                --clr-primary-hover: #a78bfa;
                 --clr-surface: #1e1e1e;
                 --clr-border: #333333;
                 --clr-chip-bg: #2c2c2c;
@@ -66,12 +67,23 @@
             border-block-end: 1px solid var(--clr-border);
         }
         section:last-of-type { border-block-end: none; }
-        .section-title { font-size: var(--fs-h2); margin-block-end: var(--space-lg); text-align: center; }
+        .section-title {
+            font-size: var(--fs-h2);
+            margin-block-end: var(--space-lg);
+            text-align: center;
+            transition: color var(--transition-speed) ease;
+        }
+        .section-title:hover {
+            background: linear-gradient(135deg, #c084fc, #8b5cf6, #6d28d9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
         .btn {
             display: inline-block;
-            background-color: var(--clr-primary);
-            color: var(--clr-bg);
+            background: var(--clr-primary-gradient);
+            color: #ffffff;
             padding-block: 0.75rem;
             padding-inline: 1.5rem;
             border-radius: var(--radius-pill);
@@ -80,9 +92,9 @@
             cursor: pointer;
             transition: all var(--transition-speed) ease;
         }
-        .btn:hover { background-color: var(--clr-primary-hover); color: var(--clr-bg); transform: translateY(-2px); }
-        .btn-outline { background-color: transparent; color: var(--clr-primary); border-color: var(--clr-primary); }
-        .btn-outline:hover { background-color: var(--clr-primary); color: var(--clr-bg); }
+        .btn:hover { background: var(--clr-primary-gradient); filter: brightness(1.08); color: #ffffff; transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--clr-primary); border-color: var(--clr-primary); }
+        .btn-outline:hover { background: var(--clr-primary-gradient); color: #ffffff; }
 
         .site-header {
             position: sticky;
@@ -97,7 +109,12 @@
         .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; color: var(--clr-text); }
         .nav-links { display: flex; list-style: none; gap: var(--space-lg); }
         .nav-links a { color: var(--clr-text-muted); font-weight: 600; }
-        .nav-links a:hover { color: var(--clr-primary); }
+        .nav-links a:hover {
+            background: var(--clr-primary-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
         .hero {
             display: flex;
@@ -109,8 +126,32 @@
             padding-block: var(--space-xl);
             border-block-end: none;
         }
-        .hero h1 { font-size: var(--fs-h1); line-height: 1.1; margin-block-end: var(--space-md); letter-spacing: -1px; }
+        .hero h1 {
+            font-size: var(--fs-h1);
+            line-height: 1.1;
+            margin-block-end: var(--space-md);
+            letter-spacing: -1px;
+            color: var(--clr-text);
+            transition: color var(--transition-speed) ease;
+        }
+        .hero h1:hover {
+            background: linear-gradient(135deg, #c084fc, #8b5cf6, #6d28d9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
         .hero p { font-size: var(--fs-h3); color: var(--clr-text-muted); max-width: 800px; margin-block-end: var(--space-lg); }
+        .hero p:nth-of-type(1) {
+            font-size: var(--fs-h3);
+            font-weight: 600;
+            transition: color var(--transition-speed) ease;
+        }
+        .hero p:nth-of-type(1):hover {
+            background: linear-gradient(135deg, #c084fc, #8b5cf6, #6d28d9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
         .about-content { display: grid; gap: var(--space-lg); grid-template-columns: 1fr; max-width: 800px; margin-inline: auto; text-align: center; }
         .about-content p { font-size: 1.1rem; color: var(--clr-text-muted); }
@@ -163,7 +204,7 @@
 <body>
     <header class="site-header">
         <div class="container nav-container">
-            <a href="#home" class="logo">GVM.</a>
+            <a href="#home" class="logo">GVM</a>
             <nav aria-label="Main Navigation">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -230,7 +271,7 @@
                 </article>
 
                 <article class="project-card">
-                    <img src="https://placehold.co/600x400/0056b3/ffffff?text=Sales+Dashboard" alt="Sales Dashboard preview" class="project-image" loading="lazy" width="600" height="400">
+                    <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Sales+Dashboard" alt="Sales Dashboard preview" class="project-image" loading="lazy" width="600" height="400">
                     <div class="project-content">
                         <h3 class="project-title">Interactive Sales Dashboard</h3>
                         <p class="project-desc">A dynamic Tableau dashboard visualizing regional sales performance, profit margins, and year-over-year growth metrics.</p>
