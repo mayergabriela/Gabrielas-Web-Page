@@ -166,9 +166,14 @@
             font-weight: 600;
             color: var(--clr-text);
             box-shadow: var(--shadow-sm);
-            transition: transform var(--transition-speed) ease;
+            transition: transform var(--transition-speed) ease, background var(--transition-speed) ease, color var(--transition-speed) ease;
         }
-        .skill-chip:hover { transform: translateY(-2px); }
+        .skill-chip:hover {
+            background: var(--clr-primary-gradient);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
 
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--space-lg); }
         .project-card {
